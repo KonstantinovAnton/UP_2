@@ -24,9 +24,10 @@ namespace Sessia2
         {
             InitializeComponent();
             tbSubscriberNomer.Text = tbSubscriberNomer.Text + subscriber.SubscriberNomer; // Заполнения данных о пользователе
-            tbSurname.Text = tbSurname.Text + subscriber.Surname;
-            tbName.Text = tbName.Text + subscriber.Name;
-            tbPatronymic.Text = tbPatronymic.Text + subscriber.Patronymic;
+
+            tbSurname.Text = tbSurname.Text + " " +  subscriber.Surname + " " + subscriber.Name + "  "+ subscriber.Patronymic;
+
+
             tbPlace0fResidence.Text = tbPlace0fResidence.Text + subscriber.Place0fResidence;
             tbResidentialAddress.Text = tbResidentialAddress.Text + subscriber.ResidentialAddress.Raions.RaionName + ", " + subscriber.ResidentialAddress.Citys.City + " " + subscriber.ResidentialAddress.Streets.Street + " " + subscriber.ResidentialAddress.House;
             tbSeria.Text = tbSeria.Text + subscriber.Seria; // Формирование паспортных данных
@@ -49,7 +50,7 @@ namespace Sessia2
                 tbReasonForTermination.Text = "";
                 tbReasonForTermination.Visibility = Visibility.Collapsed;
             }
-            List<ConnectedServices> connectedServices = Base.baseDate.ConnectedServices.Where(x => x.SubscribersID == subscriber.SubscriberID).ToList(); // Формирование списка подключенных услуг с датой подключения
+            List<ConnectedServices> connectedServices = Base.BD.ConnectedServices.Where(x => x.SubscribersID == subscriber.SubscriberID).ToList(); // Формирование списка подключенных услуг с датой подключения
             for(int i = 0; i < connectedServices.Count; i++)
             {
                 if(i == connectedServices.Count - 1) // Если последний эллемент, то на новую строку не переходим
@@ -75,7 +76,7 @@ namespace Sessia2
                     }
                 }
             }
-            List<EquipmentInstallations> equipmentInstallations = Base.baseDate.EquipmentInstallations.Where(x => x.SubscriberID == subscriber.SubscriberID).ToList();
+            List<EquipmentInstallations> equipmentInstallations = Base.BD.EquipmentInstallations.Where(x => x.SubscriberID == subscriber.SubscriberID).ToList();
             for(int i = 0; i < equipmentInstallations.Count; i++) // Формирование списка установленного оборудования
             {
                 if (i == connectedServices.Count - 1) // Если последний эллемент, то на новую строку не переходим
@@ -102,7 +103,7 @@ namespace Sessia2
                 }
             }
             DateTime dateTime = DateTime.Now.AddMonths(-12); // Дата год назад
-            List<CRM> cRMs = Base.baseDate.CRM.Where(x => x.SubscriberID == subscriber.SubscriberID && x.DateCreation >= dateTime).ToList();
+            List<CRM> cRMs = Base.BD.CRM.Where(x => x.SubscriberID == subscriber.SubscriberID && x.DateCreation >= dateTime).ToList();
             for(int i = 0; i < cRMs.Count; i++) // Формирование списка оказанных услуг за год
             {
                 if (i == cRMs.Count - 1) // Если последний элемент, то пробелы в конце не ставим

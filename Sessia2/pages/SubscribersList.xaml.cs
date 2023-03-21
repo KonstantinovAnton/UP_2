@@ -26,9 +26,9 @@ namespace Sessia2
         {
             InitializeComponent();
             b = true;
-            dgSubscribers.ItemsSource = Base.baseDate.Subscribers.ToList();
+            dgSubscribers.ItemsSource = Base.BD.Subscribers.ToList();
             cbActive.IsChecked = true; // По умолчанию выводятся абоненты с активными договорами
-            List<Raions> raions = Base.baseDate.Raions.ToList(); // Заполнение списка районов
+            List<Raions> raions = Base.BD.Raions.ToList(); // Заполнение списка районов
             cbFilterRaion.Items.Add("Все районы");
             foreach(Raions raion in raions)
             {
@@ -64,15 +64,15 @@ namespace Sessia2
             List<Subscribers> subscribers = new List<Subscribers>();
             if((bool)cbActive.IsChecked && (bool)cbNotActive.IsChecked) // Фильтрация по активности договоров
             {
-                subscribers = Base.baseDate.Subscribers.ToList();
+                subscribers = Base.BD.Subscribers.ToList();
             }
             else if((bool)cbActive.IsChecked && (bool)!cbNotActive.IsChecked)
             {
-                subscribers = Base.baseDate.Subscribers.Where(x => x.Contracts.TermibationDate == null).ToList();
+                subscribers = Base.BD.Subscribers.Where(x => x.Contracts.TermibationDate == null).ToList();
             }
             else if ((bool)!cbActive.IsChecked && (bool)cbNotActive.IsChecked)
             {
-                subscribers = Base.baseDate.Subscribers.Where(x => x.Contracts.TermibationDate != null).ToList();
+                subscribers = Base.BD.Subscribers.Where(x => x.Contracts.TermibationDate != null).ToList();
             }
             else
             {
@@ -84,12 +84,12 @@ namespace Sessia2
             }
             if (cbFilterRaion.SelectedIndex > 0) // Фильтрация по району
             {
-                Raions raion = Base.baseDate.Raions.FirstOrDefault(x => x.RaionName == cbFilterRaion.SelectedValue); // Район по названию
+                Raions raion = Base.BD.Raions.FirstOrDefault(x => x.RaionName == cbFilterRaion.SelectedValue); // Район по названию
                 subscribers = subscribers.Where(x => x.ResidentialAddress.RaionID == raion.RaionID).ToList();
             }
             if(cbFilterStreet.SelectedIndex > 0) // Фильтрация по улице
             {
-                Streets street = Base.baseDate.Streets.FirstOrDefault(x => x.Street == cbFilterStreet.SelectedValue);
+                Streets street = Base.BD.Streets.FirstOrDefault(x => x.Street == cbFilterStreet.SelectedValue);
                 subscribers = subscribers.Where(x => x.ResidentialAddress.StreetID == street.StreetID).ToList();
             }
             if (cbFiltNomerHouse.SelectedIndex > 0) // Фильтрация по дому
@@ -128,7 +128,7 @@ namespace Sessia2
                 b = false;
                 cbFilterStreet.Items.Clear();
                 cbFilterStreet.IsEnabled = true;
-                List<ResidentialAddress> residentialAddresses = Base.baseDate.ResidentialAddress.Where(x => x.RaionID == cbFilterRaion.SelectedIndex).ToList();
+                List<ResidentialAddress> residentialAddresses = Base.BD.ResidentialAddress.Where(x => x.RaionID == cbFilterRaion.SelectedIndex).ToList();
                 List<string> streets = new List<string>();
                 cbFilterStreet.Items.Add("Все улицы");
                 foreach (ResidentialAddress res in residentialAddresses) // Создание списка улиц согласно району
@@ -161,7 +161,7 @@ namespace Sessia2
             {
                 cbFiltNomerHouse.Items.Clear();
                 cbFiltNomerHouse.IsEnabled = true;
-                List<ResidentialAddress> residentialAddresses = Base.baseDate.ResidentialAddress.Where(x => x.RaionID == cbFilterRaion.SelectedIndex && x.StreetID == cbFilterStreet.SelectedIndex).ToList();
+                List<ResidentialAddress> residentialAddresses = Base.BD.ResidentialAddress.Where(x => x.RaionID == cbFilterRaion.SelectedIndex && x.StreetID == cbFilterStreet.SelectedIndex).ToList();
                 List<string> houses = new List<string>();
                 cbFiltNomerHouse.Items.Add("Все дома");
                 foreach (ResidentialAddress res in residentialAddresses) // Создание списка улиц согласно району

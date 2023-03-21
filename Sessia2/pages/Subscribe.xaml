@@ -4,7 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Sessia2"
-      mc:Ignorable="d" Style="{StaticResource PageMain}"
+      mc:Ignorable="d"
       d:DesignHeight="850" d:DesignWidth="900" Margin="10"
       Title="Подробное описание абонента">
     <Grid>
@@ -15,30 +15,17 @@
         <ScrollViewer>
             <StackPanel>
                 <TextBlock Name="tbSubscriberNomer" Text="Номер: " HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="0"/>
-                <Grid Grid.Row="0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Name="tbSurname" Text="Фамилия: " HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="0"/>
-                    <TextBlock Name="tbName" Text="Имя: " HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1"/>
-                    <TextBlock Name="tbPatronymic" Text="Отчество: " HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="2"/>
-                </Grid>
+                <TextBlock Name="tbSurname" Text="Фамилия: " HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="0"/>
                 <TextBlock x:Name="tbPlace0fResidence" Text="Адрес прописки: " TextWrapping="Wrap"/>
                 <TextBlock x:Name="tbResidentialAddress" Text="Адрес проживания: " TextWrapping="Wrap"/>
                 <GroupBox Header="Паспортные данные" Margin="0, 10, 0, 10">
                     <StackPanel>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
+                        
+                         
                             <TextBlock Name="tbSeria" Text="Серия: " HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="0"/>
                             <TextBlock Name="tbNomer" Text="Номер: " HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1"/>
                             <TextBlock Name="tbDateOfIssue" Text="Дата выдачи: " HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="2"/>
-                        </Grid>
+                        
                         <TextBlock Name="tbIssuedBy" Text="Выдан: "/>
                     </StackPanel>
                 </GroupBox>
@@ -81,8 +68,8 @@
                 </GroupBox>
             </StackPanel>
         </ScrollViewer>
-        <Grid Grid.Row="2">
-            <Button x:Name="btnBack" Content="Назад" Template="{StaticResource CTButonMainPage}" Style="{StaticResource BtnStyle}" HorizontalAlignment="Left" Width="100" Height="40" Click="btnBack_Click" Cursor="Hand"/>
+        <Grid Grid.Row="2" Background="#B5DEFA">
+            <Button x:Name="btnBack" Content="Назад"  HorizontalAlignment="Center" Width="130" Height="40" Click="btnBack_Click" Cursor="Hand"/>
         </Grid>
     </Grid>
 </Page>

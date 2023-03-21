@@ -35,7 +35,7 @@ namespace Sessia2
         {
             get
             {
-                List<ConnectedServices> services = Base.baseDate.ConnectedServices.Where(x => x.SubscribersID == SubscriberID).ToList();
+                List<ConnectedServices> services = Base.BD.ConnectedServices.Where(x => x.SubscribersID == SubscriberID).ToList();
                 string strServices = "";
                 for(int i = 0; i < services.Count; i++)
                 {

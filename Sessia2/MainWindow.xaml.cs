@@ -23,11 +23,11 @@ namespace Sessia2
         public MainWindow()
         {
             InitializeComponent();
-            Base.baseDate = new BaseDate();
+            Base.BD = new BaseDate();
             FrameClass.frame = mainFrame;
             FrameClass.frame.Navigate(new SubscribersList());
             tbHeader.Text = "Абоненты ТНС";
-            cbFIOEmployee.ItemsSource = Base.baseDate.Employees.ToList(); // Заполнение списка сотрудников
+            cbFIOEmployee.ItemsSource = Base.BD.Employees.ToList(); // Заполнение списка сотрудников
             cbFIOEmployee.SelectedValuePath = "EmployeesID";
             cbFIOEmployee.DisplayMemberPath = "FIO";
             cbFIOEmployee.SelectedIndex = 0;
@@ -35,14 +35,14 @@ namespace Sessia2
 
         private void cbFIOEmployee_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Employees employee = Base.baseDate.Employees.FirstOrDefault(x => x.EmployeeID == cbFIOEmployee.SelectedIndex + 1);
+            Employees employee = Base.BD.Employees.FirstOrDefault(x => x.EmployeeID == cbFIOEmployee.SelectedIndex + 1);
             imUser.ImageSource = new BitmapImage(new Uri("" + employee.Image, UriKind.Relative)); // Формирование аватарки сотрудника
             if (employee != null) // Изменение списка событий
             {
-                List<Events> events = Base.baseDate.Events.Where(x => x.RoleID == employee.RoleID).ToList();
+                List<Events> events = Base.BD.Events.Where(x => x.RoleID == employee.RoleID).ToList();
                 lvEvents.ItemsSource = events.OrderBy(x => x.EventDate);
             }
-            List<AvailableModules> availableModules = Base.baseDate.AvailableModules.Where(x => x.RoleID == employee.RoleID).ToList(); // Изменение доступных модулей
+            List<AvailableModules> availableModules = Base.BD.AvailableModules.Where(x => x.RoleID == employee.RoleID).ToList(); // Изменение доступных модулей
             imSubscriber.Visibility = Visibility.Collapsed; // Скрытие всех элементов
             imEquipmentManagement.Visibility = Visibility.Collapsed;
             imAssets.Visibility = Visibility.Collapsed;
@@ -153,8 +153,7 @@ namespace Sessia2
 
         private void lbCRM_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            FrameClass.frame.Navigate(new CRMPage());
-            tbHeader.Text = "CRM";
+           
         }
     }
 }

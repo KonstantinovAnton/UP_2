@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Sessia2"
-        mc:Ignorable="d" Icon="/resources/image.ico" Style="{StaticResource WindowsMain}"
+        mc:Ignorable="d" Icon="/resources/image.ico" 
         Title="ООО «Телеком Нева Связь»" Height="800" Width="1250" MinHeight="800" MinWidth="1250">
     <Grid>
         <Grid Grid.Column="0" MouseEnter="Grid_MouseEnter" MouseLeave="Grid_MouseLeave" Background="White" x:Name="cd" Width="100" HorizontalAlignment="Left" Panel.ZIndex="1000">
@@ -40,10 +40,7 @@
                 </Label>
                 <Label Name="lbCRM" Content="CRM" Background="LightGray" Margin="5" Padding="5" Height="60" Width="160" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" MouseDown="lbCRM_MouseDown" Cursor="Hand"/>
             </StackPanel>
-            <StackPanel VerticalAlignment="Bottom">
-                <Button Content="проф." FontSize="18" Margin="5" Template="{StaticResource CTButon}" HorizontalAlignment="Center" Width="60" Height="60"/>
-                <Button Content="?" Margin="5" FontWeight="Bold" Template="{StaticResource CTButon}" HorizontalAlignment="Center" Width="60" Height="60"/>
-            </StackPanel>
+            
             <Rectangle VerticalAlignment="Stretch" Fill="Black" Width="1" Grid.Column="1" HorizontalAlignment="Left" Margin="0"/>
         </Grid>
         <Grid Margin="100, 0, 0, 0">
@@ -51,7 +48,7 @@
                 <RowDefinition Height="150"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Grid Grid.Row="0">
+            <Grid Grid.Row="0" Background="#B5DEFA">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition Width="500"/>
@@ -92,7 +89,7 @@
                     <StackPanel x:Name="btnUp" Grid.Row="0" MouseUp="btnUp_MouseDown" Background="#FFEAEAEA">
                         <Polyline Stroke="Black" Points="0, 15, 15, 5, 30, 15" HorizontalAlignment="Center"/>
                     </StackPanel>
-                    <ListView x:Name="lvEvents" Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" Background="#FFEAEAEA">
+                    <ListView x:Name="lvEvents" Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" Background="#FFFFFF">
                         <ListView.ItemContainerStyle>
                             <Style TargetType="ListViewItem">
                                 <Setter Property="HorizontalContentAlignment" Value="Center" />
@@ -100,8 +97,8 @@
                         </ListView.ItemContainerStyle>
                         <ListView.ItemTemplate>
                             <DataTemplate>
-                                <Grid Background="LightGray" Width="220">
-                                    <TextBlock Text="{Binding Description}" TextWrapping="Wrap" HorizontalAlignment="Center" Margin="5" VerticalAlignment="Center"/>
+                                <Grid Background="#4A67F7" Width="220" >
+                                    <TextBlock Text="{Binding Description}" TextWrapping="Wrap" HorizontalAlignment="Center" Margin="5" VerticalAlignment="Center" Foreground="White"/>
                                 </Grid>
                             </DataTemplate>
                         </ListView.ItemTemplate>

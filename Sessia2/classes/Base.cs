@@ -8,6 +8,6 @@ namespace Sessia2
 {
     public class Base
     {
-        public static BaseDate baseDate;
+        public static BaseDate BD;
     }
 }
