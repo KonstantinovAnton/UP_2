@@ -103,7 +103,7 @@ namespace Sessia2
             dgSubscribers.ItemsSource = subscribers;          
             if(subscribers.Count == 0 && b)
             {
-                MessageBox.Show("Данные отсутсвуют");
+                MessageBox.Show("Данные отсутсвуют", "Нету данных", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 

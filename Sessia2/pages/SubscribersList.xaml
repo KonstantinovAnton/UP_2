@@ -9,8 +9,8 @@
       Title="Абоненты ТНС">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="400"/>
             <RowDefinition/>
+            <RowDefinition Height="60"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="1">
