@@ -213,6 +213,7 @@
     <None Include="BaseDate.edmx.diagram">
       <DependentUpon>BaseDate.edmx</DependentUpon>
     </None>
+    <None Include="materials\DataDictionary_UP.xlsx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
